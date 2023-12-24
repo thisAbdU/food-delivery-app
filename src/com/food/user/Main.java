@@ -1,4 +1,4 @@
-package package1;
+package com.food.user;
 
 public class Main {
     public static void main(String[] args){

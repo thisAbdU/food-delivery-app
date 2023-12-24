@@ -128,3 +128,20 @@
 + setMessage(message: string): void
 + setTimestamp(timestamp: DateTime): void
 -------------------
+[Project Structure]
+--------------------
+com.food
+├── restaurant
+│   ├── Restaurant.java
+│   ├── MenuItem.java
+│   └── ...
+├── delivery
+│   ├── DeliveryService.java
+│   ├── Order.java
+│   └── ...
+├── admin
+│   ├── AdminPanel.java
+│   └── ...
+└── user
+├── UserApp.java
+└── ...

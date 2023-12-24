@@ -1,4 +1,4 @@
-package package1;
+package com.food.user;
 
 import java.util.ArrayList;
 
