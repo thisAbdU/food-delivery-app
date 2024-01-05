@@ -13,7 +13,7 @@ public class Payment {
     // Getter and Setter methods
 
     public void processPayment() {
-
+            
     }
 
     public String generateReceipt() {

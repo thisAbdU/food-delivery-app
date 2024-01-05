@@ -1,2 +1,6 @@
-package com.food.database;public class PaymentDatabase {
+package com.food.database;
+
+public class PaymentDatabase extends DatabaseConnection{
+
+
 }
