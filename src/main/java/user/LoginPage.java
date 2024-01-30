@@ -3,7 +3,7 @@ package user;
 import javax.swing.*;
 
 import database.UserDatabase;
-import restuarant.SampleReastaurantDashboard;
+import frontend.SampleReastaurantDashboard;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
