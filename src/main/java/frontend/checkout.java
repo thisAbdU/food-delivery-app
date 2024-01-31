@@ -5,135 +5,92 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-class checkout extends JFrame implements ActionListener{
-    JPanel nav,container;
-    JTextField promo,location,sub,discount,service,fee,amount;
-    JButton enter,confirm;
-    JLabel checkout,deliver,subTotal,discountText,charge,delivery,total;
-    JSeparator separator;
+class checkout extends Restaurants {
+    JTextField promo, location, sub, discount, service, fee, amount;
+    JButton enter, confirm;
+    JLabel checkout, deliver, subTotal, discountText, charge, delivery, total;
 
-    public checkout(){
-        this.setSize(1366,768);
+    public checkout() {
+        super();
+
+        this.setSize(1366, 768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        nav=new JPanel();
-        nav.setBackground(Color.RED);
-        nav.setPreferredSize(new Dimension(100,100));
-
-
-        checkout=new JLabel("checkout");
-        checkout.setForeground(Color.white);
-        checkout.setFont(new Font("MV Boli",Font.BOLD,45));
-        checkout.setBounds(430,5,1000,75);
-
-        container= new JPanel();
-        container.setLayout(null); 
+        JPanel container = new JPanel();
+        container.setLayout(null); // Use null layout
         container.setBackground(Color.WHITE);
-        container.setBounds(15, 105, 800, 600);
 
-        promo=new JTextField("promo code");
-        promo.setBounds(15,15,200,35);
+        // Checkout Label
+        checkout = new JLabel("Checkout");
+        checkout.setForeground(Color.WHITE);
+        checkout.setFont(new Font("MV Boli", Font.BOLD, 45));
+        checkout.setBounds(300, 10, 300, 50);
+        container.add(checkout);
 
-        enter=new JButton("Enter");
-        enter.setFocusable(false);
-        enter.addActionListener(this);
-        enter.setBackground(new Color(255,0,204));
-        enter.setBounds(200,15,70,35);
-
-        deliver=new JLabel("Deliver to:");
-        deliver.setForeground(Color.red);
-        deliver.setBounds(15,50,100,30);
-        deliver.setFont(new Font("sans serif",Font.BOLD,12));
-
-        location=new JTextField("current location");
-        location.setBounds(15,80,200,35);
-
-        subTotal=new JLabel("sub total");
-        subTotal.setForeground(Color.red);
-        subTotal.setBounds(15,130,150,30);
-        subTotal.setFont(new Font("sans serif",Font.BOLD,14));
-
-        sub=new JTextField();
-        sub.setBounds(150,130,170,30);
-
-        discountText=new JLabel("discount");
-        discountText.setForeground(Color.red);
-        discountText.setBounds(15,175,150,30);
-        discountText.setFont(new Font("sans serif",Font.BOLD,14));
-
-        discount=new JTextField();
-        discount.setBounds(150,175,170,30);
-
-        charge=new JLabel("service charge");
-        charge.setForeground(Color.red);
-        charge.setBounds(15,220,150,30);
-        charge.setFont(new Font("sans serif",Font.BOLD,14));
-
-        service=new JTextField();
-        service.setBounds(150,220,170,30);
-
-        delivery=new JLabel("Delivery fee");
-        delivery.setForeground(Color.red);
-        delivery.setBounds(15,265,150,30);
-        delivery.setFont(new Font("sans serif",Font.BOLD,14));
-
-        fee=new JTextField();
-        fee.setBounds(150,265,170,30);
- 
-        separator = new JSeparator(SwingConstants.HORIZONTAL);
-        separator.setBounds(15, 310, 305, 2);
-        separator.setForeground(Color.black);
-
-        total=new JLabel("Total Amount");
-        total.setForeground(Color.red);
-        total.setBounds(30,327,160,30);
-        total.setFont(new Font("sans serif",Font.BOLD,16));
-
-        amount=new JTextField();
-        amount.setBounds(160,327,170,30);
-
-        confirm=new JButton("Confirm Order");
-        confirm.setFocusable(false);
-        confirm.addActionListener(this);
-        confirm.setBackground(new Color(255,0,204));
-        confirm.setBounds(15,430,290,35);
-
-
-
+        // Promo code field and Enter button
+        promo = new JTextField("promo code");
+        promo.setBounds(100, 180, 200, 30);
         container.add(promo);
+
+        enter = new JButton("Enter");
+        enter.setBounds(310, 180, 70, 30);
         container.add(enter);
+
+        // Deliver to field
+        deliver = new JLabel("Deliver to:");
+        deliver.setForeground(Color.RED);
+        deliver.setBounds(100, 230, 100, 30);
         container.add(deliver);
+
+        location = new JTextField("current location");
+        location.setBounds(100, 260, 200, 30);
         container.add(location);
+
+        // Subtotal field
+        subTotal = new JLabel("Subtotal");
+        subTotal.setForeground(Color.RED);
+        subTotal.setBounds(100, 310, 100, 30);
         container.add(subTotal);
+
+        sub = new JTextField();
+        sub.setBounds(100, 340, 200, 30);
         container.add(sub);
+
+        // Discount field
+        discountText = new JLabel("Discount");
+        discountText.setForeground(Color.RED);
+        discountText.setBounds(100, 390, 100, 30);
         container.add(discountText);
+
+        discount = new JTextField();
+        discount.setBounds(100, 420, 200, 30);
         container.add(discount);
+
+        // Service charge field
+        charge = new JLabel("Service charge");
+        charge.setForeground(Color.RED);
+        charge.setBounds(100, 470, 150, 30);
         container.add(charge);
+
+        service = new JTextField();
+        service.setBounds(100, 500, 200, 30);
         container.add(service);
-        container.add(delivery);
-        container.add(fee);
-        container.add(separator);
-        container.add(total);
-        container.add(amount);
+
+        // Confirm Order button
+        confirm = new JButton("Confirm Order");
+        confirm.setBounds(100, 550, 200, 35);
         container.add(confirm);
 
-        this.add(nav,BorderLayout.NORTH);
         this.add(container);
-
-        nav.setLayout(null);
-        nav.add(checkout);
-
-    this.setVisible(true);
+        this.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==confirm){
-            new payment();
-            this.dispose();
-
+        if (e.getSource() == confirm) {
+            // Handle confirm button action
+            System.out.println("Confirm button clicked");
         }
     }
-
 }

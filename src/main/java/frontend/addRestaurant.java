@@ -5,62 +5,44 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 
-class AddRestaurant extends JFrame implements ActionListener {
-    JPanel nav, container;
-    JLabel uploadrestaurantLabel,foodDeliveryApp;
+class AddRestaurant extends Restaurants {
+    JPanel container;
+    JLabel uploadrestaurantLabel, restaurantName, Location;
     JButton uploadrrestaurantButton, confirm;
     JTextField nameField, LocationField;
-    JLabel restaurantName,Location;
 
     public AddRestaurant() {
+        super();
+
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-
-
-        foodDeliveryApp=new JLabel("Campus Food delivery app");
-        foodDeliveryApp.setForeground(Color.white);
-        foodDeliveryApp.setFont(new Font("MV Boli",Font.BOLD,45));
-        foodDeliveryApp.setBounds(430,5,1000,75);
-
-        nav = new JPanel();
-        nav.setBackground(Color.RED);
-        nav.setPreferredSize(new Dimension(100, 100));
-
-
-        nav.add(foodDeliveryApp);
-
-        
 
         container = new JPanel();
         container.setLayout(null);
         container.setBackground(Color.WHITE);
         container.setBounds(15, 105, 800, 600);
 
-        restaurantName=new JLabel("Enter the restuarnt name");
+        restaurantName = new JLabel("Enter the restaurant name");
         restaurantName.setForeground(Color.red);
-        restaurantName.setBounds(15,130,200,30);
-        restaurantName.setFont(new Font("sans serif",Font.BOLD,14));
+        restaurantName.setBounds(15, 130, 200, 30);
+        restaurantName.setFont(new Font("sans serif", Font.BOLD, 14));
 
-        nameField=new JTextField();
-        nameField.setBounds(200,130,170,30);
+        nameField = new JTextField();
+        nameField.setBounds(200, 130, 170, 30);
 
-        
-
-        Location=new JLabel("Enter the Location");
+        Location = new JLabel("Enter the Location");
         Location.setForeground(Color.red);
-        Location.setBounds(15,175,200,30);
-        Location.setFont(new Font("sans serif",Font.BOLD,14));
+        Location.setBounds(15, 175, 200, 30);
+        Location.setFont(new Font("sans serif", Font.BOLD, 14));
 
-        LocationField=new JTextField();
-        LocationField.setBounds(200,175,170,30);
-
-        
+        LocationField = new JTextField();
+        LocationField.setBounds(200, 175, 170, 30);
 
         uploadrestaurantLabel = new JLabel("Upload your logo:");
         uploadrestaurantLabel.setBounds(15, 300, 150, 30);
         uploadrestaurantLabel.setForeground(Color.red);
-        uploadrestaurantLabel.setFont(new Font("sans serif",Font.BOLD,14));
+        uploadrestaurantLabel.setFont(new Font("sans serif", Font.BOLD, 14));
 
         uploadrrestaurantButton = new JButton("Upload");
         uploadrrestaurantButton.setFocusable(false);
@@ -77,16 +59,13 @@ class AddRestaurant extends JFrame implements ActionListener {
         container.add(uploadrrestaurantButton);
         container.add(confirm);
 
-        this.add(nav, BorderLayout.NORTH);
         this.add(container);
 
-        this.setVisible(true);
-
-        container.add( restaurantName);
+        container.add(restaurantName);
         container.add(nameField);
         container.add(Location);
-        container.add( LocationField);
-        container.add( confirm);
+        container.add(LocationField);
+        container.add(confirm);
     }
 
     @Override

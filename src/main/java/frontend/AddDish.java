@@ -5,57 +5,39 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 
-class AddDish extends JFrame implements ActionListener {
-    JPanel nav, container;
-    JLabel uploaddishLabel,foodDeliveryApp, dishName,price;
+class AddDish extends Restaurants  {
+    JPanel container;
+    JLabel uploaddishLabel, dishName, price;
     JButton uploaddishButton, confirmDish;
     JTextField nameField, priceField;
    
 
     public AddDish() {
+        super();
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout());
-
-
-        foodDeliveryApp=new JLabel("Campus Food delivery app");
-        foodDeliveryApp.setForeground(Color.white);
-        foodDeliveryApp.setFont(new Font("MV Boli",Font.BOLD,45));
-        foodDeliveryApp.setBounds(430,5,1000,75);
-
-        nav = new JPanel();
-        nav.setBackground(Color.RED);
-        nav.setPreferredSize(new Dimension(100, 100));
-
-
-        nav.add(foodDeliveryApp);
-
-        
+        this.setLayout(new BorderLayout());        
 
         container = new JPanel();
         container.setLayout(null);
         container.setBackground(Color.WHITE);
         container.setBounds(15, 105, 800, 600);
 
-        dishName=new JLabel("Enter the Dish name");
+        dishName = new JLabel("Enter the Dish name");
         dishName.setForeground(Color.red);
         dishName.setBounds(15,130,200,30);
         dishName.setFont(new Font("sans serif",Font.BOLD,14));
 
-        nameField=new JTextField();
+        nameField = new JTextField();
         nameField.setBounds(200,130,170,30);
 
-        
-
-        price=new JLabel("Enter the price");
+        price = new JLabel("Enter the price");
         price.setForeground(Color.red);
         price.setBounds(15,175,200,30);
         price.setFont(new Font("sans serif",Font.BOLD,14));
 
-        priceField=new JTextField();
+        priceField = new JTextField();
         priceField.setBounds(200,175,170,30);
-
-        
 
         uploaddishLabel = new JLabel("Upload your logo:");
         uploaddishLabel.setBounds(15, 300, 150, 30);
@@ -77,16 +59,13 @@ class AddDish extends JFrame implements ActionListener {
         container.add(uploaddishButton);
         container.add(confirmDish);
 
-        this.add(nav, BorderLayout.NORTH);
         this.add(container);
 
-        this.setVisible(true);
-
-        container.add( dishName);
+        container.add(dishName);
         container.add(nameField);
         container.add(price);
-        container.add( priceField);
-        container.add( confirmDish);
+        container.add(priceField);
+        container.add(confirmDish);
     }
 
     @Override

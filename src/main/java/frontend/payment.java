@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-class payment extends JFrame implements ActionListener {
+class payment extends Restaurants {
     JPanel nav,container;
     JTextField number;
     JButton payment;
@@ -13,15 +13,14 @@ class payment extends JFrame implements ActionListener {
     
 
     public payment(){
+          
+        super();
+
         this.setSize(1366,768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
     
-        
-        nav=new JPanel();
-        nav.setBackground(Color.RED);
-        nav.setPreferredSize(new Dimension(100,100));
-
+      
         paymentText=new JLabel("Payment");
         paymentText.setForeground(Color.white);
         paymentText.setFont(new Font("MV Boli",Font.BOLD,45));

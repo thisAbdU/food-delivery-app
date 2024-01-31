@@ -47,7 +47,7 @@ public class DishDisplay {
     }
 }
 
-class Dishes extends JFrame implements ActionListener{
+class Dishes extends Restaurants{
     JPanel nav,topLeftPanel,topCenter1Panel,topCenter2Panel,topRightPanel,bottomLeftPanel,bottomCenter1Panel,bottomCenter2Panel,bottomRightPanel,back;
     JButton topLeftButton,topCenter1Button,topCenter2Button,topRightButton,bottomLeftButton,bottomCenter1Button,bottomCenter2Button,bottomRightButton,backButton;
     JLabel  restourantName1,menus,
@@ -61,6 +61,7 @@ class Dishes extends JFrame implements ActionListener{
 
 
     public Dishes(String restourantName, DishItem[] dishItems){
+        super();
         this.setSize(1366,768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -77,12 +78,7 @@ class Dishes extends JFrame implements ActionListener{
         ImageIcon bottomRightcon= new ImageIcon(dishItems[7].getImagePath());
         ImageIcon backArrowIcon=new ImageIcon("javaimages/backArrow.jpeg");
         
-        
 
-
-        nav=new JPanel();
-        nav.setBackground(Color.RED);
-        nav.setPreferredSize(new Dimension(100,100));
         
 
         restourantName1=new JLabel(restourantName);
@@ -136,7 +132,7 @@ class Dishes extends JFrame implements ActionListener{
         bottomRightPanel.setBounds(1010,400,300,275);
 
         back = new JPanel();
-        back.setBackground(Color.GRAY);
+        back.setBackground(Color.white);
         back.setLayout(null);
         back.setBounds(1360,3,5,400);
 
@@ -399,11 +395,6 @@ class Dishes extends JFrame implements ActionListener{
 
 
 
-
-
-
-
-        this.add(nav,BorderLayout.NORTH);
         this.add(topLeftPanel);
         this.add(topCenter1Panel);
         this.add(topCenter2Panel);
@@ -415,11 +406,7 @@ class Dishes extends JFrame implements ActionListener{
         this.add(back);
         //this.add(scrollPane);
 
-              
-        nav.setLayout(null);
-        nav.add(restourantName1);
-        nav.add(menus);
-        nav.add(backButton);
+        
     
      this.setVisible(true);   
     }

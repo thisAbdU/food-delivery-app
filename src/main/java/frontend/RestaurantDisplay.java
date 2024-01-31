@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import user.LoginPage;
-
 class restaurantItem{
     private String name;
     private String imagepath;
@@ -36,6 +34,8 @@ class Restaurants extends JFrame implements ActionListener{
             bossburImage,mamasImage, mimisImage,chinaImage,parkdaleImage,chanolyImage,amrognImage,bellaciaoImage,
             mimistext,parkdaletext,e,chinatext,chanolytext,bellaciaotext,amrogntext,bosstext,mamastext;
     JScrollPane scrollPane;
+    ImageIcon backArrowIcon=new ImageIcon("javaimages/backArrow.jpeg");
+        
 
     public Restaurants(){
 
@@ -53,17 +53,17 @@ class Restaurants extends JFrame implements ActionListener{
         foodDeliveryApp.setFont(new Font("MV Boli",Font.BOLD,45));
         foodDeliveryApp.setBounds(430,5,1000,75);
 
-        restuarnts=new JLabel("Resturants");
-        restuarnts.setForeground(Color.white);
-        restuarnts.setFont(new Font("MV Boli",Font.BOLD,25));
-        restuarnts.setBounds(550,55,500,45);
-
         
+        backButton= new JButton();
+        backButton.setIcon(backArrowIcon);
+        backButton.addActionListener(this);
+        backButton.setBounds(0,0,50,30);
+        backButton.setFocusable(false);
+        backButton.setBackground(Color.white);
 
         this.add(nav,BorderLayout.NORTH);
         nav.setLayout(null);
         nav.add(foodDeliveryApp);
-        nav.add(restuarnts);
         nav.add(backButton);
         this.setVisible(true);  
 
@@ -83,15 +83,14 @@ class Restaurants extends JFrame implements ActionListener{
 
         
 
-        ImageIcon bossBurIcon=new ImageIcon(getClass().getResource(restaurantsList[0].getImagePath()));
-        ImageIcon mamasIcon= new ImageIcon(getClass().getResource(restaurantsList[1].getImagePath()));
-        ImageIcon mimisIcon= new ImageIcon(getClass().getResource(restaurantsList[2].getImagePath()));
-        ImageIcon parkdaleIcon= new ImageIcon(getClass().getResource(restaurantsList[3].getImagePath()));
-        ImageIcon chinaIcon= new ImageIcon(getClass().getResource(restaurantsList[4].getImagePath()));
-        ImageIcon chanolyIcon= new ImageIcon(getClass().getResource(restaurantsList[5].getImagePath()));
-        ImageIcon bellaciaoIcon= new ImageIcon(getClass().getResource(restaurantsList[6].getImagePath()));
-        ImageIcon amrognIcon= new ImageIcon(getClass().getResource(restaurantsList[7].getImagePath()));
-        ImageIcon backArrowIcon=new ImageIcon(getClass().getResource("/images/backArrow.jpeg"));
+        ImageIcon bossBurIcon=new ImageIcon(restaurantsList[0].getImagePath());
+        ImageIcon mamasIcon= new ImageIcon(restaurantsList[1].getImagePath());
+        ImageIcon mimisIcon= new ImageIcon(restaurantsList[2].getImagePath());
+        ImageIcon parkdaleIcon= new ImageIcon(restaurantsList[3].getImagePath());
+        ImageIcon chinaIcon= new ImageIcon(restaurantsList[4].getImagePath());
+        ImageIcon chanolyIcon= new ImageIcon(restaurantsList[5].getImagePath());
+        ImageIcon bellaciaoIcon= new ImageIcon(restaurantsList[6].getImagePath());
+        ImageIcon amrognIcon= new ImageIcon(restaurantsList[7].getImagePath());
         
         
 
@@ -116,11 +115,6 @@ class Restaurants extends JFrame implements ActionListener{
         foodDeliveryApp.setForeground(Color.white);
         foodDeliveryApp.setFont(new Font("MV Boli",Font.BOLD,45));
         foodDeliveryApp.setBounds(430,5,1000,75);
-
-        restuarnts=new JLabel("Resturants");
-        restuarnts.setForeground(Color.white);
-        restuarnts.setFont(new Font("MV Boli",Font.BOLD,25));
-        restuarnts.setBounds(550,55,500,45);
 
 
 
@@ -222,7 +216,7 @@ class Restaurants extends JFrame implements ActionListener{
 
         parkdaletext= new JLabel(restaurantsList[3].getName());
         parkdaletext.setForeground(Color.red);
-        parkdaletext.setBounds(20,180,400,30);
+        parkdaletext.setBounds(60,180,400,30);
         parkdaletext.setFont(new Font("sans serif",Font.BOLD,17));
 
         chinatext=new JLabel(restaurantsList[4].getName());
@@ -267,7 +261,7 @@ class Restaurants extends JFrame implements ActionListener{
         parkdaleButton= new JButton("menu");
         parkdaleButton.setFocusable(false);
         parkdaleButton.setBackground(new Color(255,0,204));
-        parkdaleButton.setBounds(90,225,100,30);
+        parkdaleButton.setBounds(60,225,100,30);
 
         chinaButton= new JButton("menu");
         chinaButton.setFocusable(false);
@@ -334,7 +328,6 @@ class Restaurants extends JFrame implements ActionListener{
 
 
         this.add(nav,BorderLayout.NORTH);
-        this.add(back,BorderLayout.CENTER);
         back.add(bossPanel);
         back.add(mamasPanel);
         back.add(mimisPanel);
@@ -344,11 +337,12 @@ class Restaurants extends JFrame implements ActionListener{
         back.add(bellaciaoPanel);
         back.add(amrognPanel);
         back.add(scrollPane);
+        scrollPane=new JScrollPane(back);
+        this.add(scrollPane,BorderLayout.CENTER);
 
               
         nav.setLayout(null);
         nav.add(foodDeliveryApp);
-        nav.add(restuarnts);
         nav.add(backButton);
              
     
@@ -356,14 +350,14 @@ class Restaurants extends JFrame implements ActionListener{
     }
     String restourantName = "Amrogn Chicken";
         DishItem[] dishItems = {
-            new DishItem("Special Shawarma", "/images/special shawarma (1).jpg", 420.00),
-            new DishItem("Chicken Shawarma", "/images/chicken shawarma.jpg", 325.00),
-            new DishItem("Chicken Kabsa", "/images/chicken kabsa (1).jpg", 600.00),
-            new DishItem("Fried Chicken", "/images/fried chicken (1).jpg", 590.00),
-            new DishItem("Roasted Chicken", "/images/roasted chicken.jpg", 770.00),
-            new DishItem("Chicken Wings", "/images/chicken wings (1).jpg", 470.00),
-            new DishItem("Chicken Burger", "/images/chicken burger (1).jpg", 430.00),
-            new DishItem("Chicken Mofu", "/images/chicken motu (1).jpg", 1530.00)
+            new DishItem("Special Shawarma", "Images/special shawarma (1).jpg", 420.00),
+            new DishItem("Chicken Shawarma", "Images/chicken shawarma.jpg", 325.00),
+            new DishItem("Chicken Kabsa", "Images/chicken kabsa (1).jpg", 600.00),
+            new DishItem("Fried Chicken", "Images/fried chicken (1).jpg", 590.00),
+            new DishItem("Roasted Chicken", "Images/roasted chicken.jpg", 770.00),
+            new DishItem("Chicken Wings", "Images/chicken wings (1).jpg", 470.00),
+            new DishItem("Chicken Burger", "Images/chicken burger (1).jpg", 430.00),
+            new DishItem("Chicken Mofu", "Images/chicken motu (1).jpg", 1530.00)
     };
 
    @Override
@@ -372,12 +366,9 @@ class Restaurants extends JFrame implements ActionListener{
         new DishDisplay(restourantName, dishItems);
         this.dispose();
     }
-    else if (e.getSource()==backButton){
-        new LoginPage();
-        this.dispose();
-    }
-   }
+   
     
 
 
+}
 }
