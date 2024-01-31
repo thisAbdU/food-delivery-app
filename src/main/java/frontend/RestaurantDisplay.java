@@ -37,6 +37,42 @@ class Restaurants extends JFrame implements ActionListener{
             mimistext,parkdaletext,e,chinatext,chanolytext,bellaciaotext,amrogntext,bosstext,mamastext;
     JScrollPane scrollPane;
 
+    public Restaurants(){
+
+        this.setSize(1366,768);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout());
+
+
+        nav=new JPanel();
+        nav.setBackground(Color.RED);
+        nav.setPreferredSize(new Dimension(100,100));
+
+        foodDeliveryApp=new JLabel("Campus Food delivery app");
+        foodDeliveryApp.setForeground(Color.white);
+        foodDeliveryApp.setFont(new Font("MV Boli",Font.BOLD,45));
+        foodDeliveryApp.setBounds(430,5,1000,75);
+
+        restuarnts=new JLabel("Resturants");
+        restuarnts.setForeground(Color.white);
+        restuarnts.setFont(new Font("MV Boli",Font.BOLD,25));
+        restuarnts.setBounds(550,55,500,45);
+
+        
+
+        this.add(nav,BorderLayout.NORTH);
+        nav.setLayout(null);
+        nav.add(foodDeliveryApp);
+        nav.add(restuarnts);
+        nav.add(backButton);
+        this.setVisible(true);  
+
+
+
+
+
+    }
+
 
     public Restaurants(restaurantItem[]restaurantsList){
         this.setSize(1366,768);
