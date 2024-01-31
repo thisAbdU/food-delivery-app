@@ -108,7 +108,13 @@ public class LoginPage extends JFrame implements ActionListener {
                     if (user.isDeliveryGuy(connectToDB, "usersData", userName)){
                         new DeliveryManPage();
                     }else{
-                       SampleReastaurantDashboard.main(null); 
+                        if (userName == "admin"){
+                            String tag = "admin";
+                        }else{
+                            String tag = "non-admin";
+                        }
+                        SampleReastaurantDashboard.main(null);
+                       
                     }
                     JOptionPane.showMessageDialog(null, "Welcome to Campus Delivery", "success!", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();    

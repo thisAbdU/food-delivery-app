@@ -77,8 +77,6 @@ class Dishes extends JFrame implements ActionListener{
         ImageIcon bottomRightcon= new ImageIcon(dishItems[7].getImagePath());
         ImageIcon backArrowIcon=new ImageIcon("javaimages/backArrow.jpeg");
         
-        
-
 
         nav=new JPanel();
         nav.setBackground(Color.RED);
