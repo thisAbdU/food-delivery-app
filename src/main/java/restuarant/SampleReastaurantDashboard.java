@@ -11,7 +11,7 @@ public class SampleReastaurantDashboard {
             new restaurantItem("Chanoly Smoothie","/images/chanoly.png"),
             new restaurantItem("Bella ciao Chicken","/images/bellaCiao.png"),
             new restaurantItem("Amrogn Chicken","/images/amrogn.png"),
-            //ew restaurantItem("backArrowIcon", "javaimages/backArrow.png")
+            //new restaurantItem("backArrowIcon", "javaimages/backArrow.png")
         };
         new RestaurantDisplay(restaurantItems);
     }

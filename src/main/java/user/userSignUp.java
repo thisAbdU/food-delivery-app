@@ -51,7 +51,7 @@ class userSignUp extends JPanel implements ActionListener{
         deliveryAddressField.setBounds(175, 300, 200, 25);
         userPasswordField.setBounds(175, 350, 200, 25);
         confirmPasswordField.setBounds(200, 400, 200, 25);
-
+        
         this.add(titleLabel);
         this.add(nameLabel);
         this.add(nameField);
@@ -107,17 +107,30 @@ class userSignUp extends JPanel implements ActionListener{
             String confirmPassword = String.valueOf(confirmPasswordField.getPassword());
             String status = "user";
         
-            // Validate if all fields are filled
+               
             if ((name.isEmpty() || userName.isEmpty() || email.isEmpty()
              || phoneNumber.isEmpty() || deliveryAddress.isEmpty() || 
              password.isEmpty() || confirmPassword.isEmpty())) {
-
                 JOptionPane.showMessageDialog(null, "Please fill in all the fields.", "Incomplete Information", JOptionPane.WARNING_MESSAGE);
-            }else if (newUser.doesUserExist(connectToDB, "usersData", userName)){
+            }
+
+            else if (!InputVerifier.isValidEmail(email)){
+                JOptionPane.showMessageDialog(null, "Please enter valid email address.", "Invalid email address", JOptionPane.WARNING_MESSAGE);
+            }else if (!InputVerifier.isValidPhoneNumber(phoneNumber)){
+                JOptionPane.showMessageDialog(null, "Please enter valid phone number.", "Invalid phone number", JOptionPane.WARNING_MESSAGE);
+            }else if (!InputVerifier.isValidPassword(password)){
+                JOptionPane.showMessageDialog(null, "length of password must be at least 8", "Invalid password", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            else if (newUser.doesUserExist(connectToDB, "usersData", userName)){
                 JOptionPane.showMessageDialog(null, "User Name Already Exist.", "user name exists", JOptionPane.ERROR_MESSAGE);
-            } else if (!password.equals(confirmPassword)) {
+            } 
+            
+            else if (!password.equals(confirmPassword)) {
                 JOptionPane.showMessageDialog(null, "Passwords do not match.", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
-            } else {
+            } 
+            
+            else {
                 // Passwords match, proceed to the next page
                 titleLabel.setForeground(Color.green);
                 JOptionPane.showMessageDialog(null, "Successfully Registered", "success!", JOptionPane.INFORMATION_MESSAGE);
@@ -125,6 +138,7 @@ class userSignUp extends JPanel implements ActionListener{
                 new LoginPage();   
                
             }              
-        
+       
     }
-}};
+
+}}
