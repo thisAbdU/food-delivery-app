@@ -29,7 +29,7 @@ public class RestaurantDisplay{
 }
 class Restaurants extends JFrame implements ActionListener{
     JPanel nav,bossPanel,mamasPanel,mimisPanel,parkdalePanel,chinaPanel,chanolyPanel,bellaciaoPanel,amrognPanel,back;
-    JButton bossButton,mamasButton,mimisButton,parkdaleButton,chinaButton,chanolyButton,bellaciaoButton,amrognButton,backButton;
+    JButton bossButton,mamasButton,mimisButton,parkdaleButton,chinaButton,chanolyButton,bellaciaoButton,amrognButton,backButton, AddRestaurantButton;
     JLabel  foodDeliveryApp,restuarnts,
             bossburImage,mamasImage, mimisImage,chinaImage,parkdaleImage,chanolyImage,amrognImage,bellaciaoImage,
             mimistext,parkdaletext,e,chinatext,chanolytext,bellaciaotext,amrogntext,bosstext,mamastext;
@@ -340,10 +340,18 @@ class Restaurants extends JFrame implements ActionListener{
         scrollPane=new JScrollPane(back);
         this.add(scrollPane,BorderLayout.CENTER);
 
+        AddRestaurantButton= new JButton("Add Dish");
+        AddRestaurantButton.setFocusable(false);
+        AddRestaurantButton.addActionListener(this);
+        AddRestaurantButton.setBackground(new Color(255,0,204));
+        AddRestaurantButton.setBounds(1255,5,100,30);
+
+
               
         nav.setLayout(null);
         nav.add(foodDeliveryApp);
         nav.add(backButton);
+        nav.add(AddRestaurantButton);
              
     
      this.setVisible(true);   

@@ -47,9 +47,9 @@ public class DishDisplay {
     }
 }
 
-class Dishes extends Restaurants{
+class Dishes extends JFrame implements ActionListener{
     JPanel nav,topLeftPanel,topCenter1Panel,topCenter2Panel,topRightPanel,bottomLeftPanel,bottomCenter1Panel,bottomCenter2Panel,bottomRightPanel,back;
-    JButton topLeftButton,topCenter1Button,topCenter2Button,topRightButton,bottomLeftButton,bottomCenter1Button,bottomCenter2Button,bottomRightButton,backButton;
+    JButton topLeftButton,topCenter1Button,topCenter2Button,topRightButton,bottomLeftButton,bottomCenter1Button,bottomCenter2Button,bottomRightButton,backButton, AddDishButton;
     JLabel  restourantName1,menus,
             topLeftImage,topCenter1Image, topCenter2Image,topRightImage,bottomLeftImage,bottomCenter1Image,bottomCenter2Image,bottomRightImage,
             topLefttext,topCenter1text,e,topCenter2text,topRighttext,bottomLefttext,bottomCenter1text,bottomCenter2text,bottomRighttext,
@@ -61,7 +61,6 @@ class Dishes extends Restaurants{
 
 
     public Dishes(String restourantName, DishItem[] dishItems){
-        super();
         this.setSize(1366,768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -78,7 +77,12 @@ class Dishes extends Restaurants{
         ImageIcon bottomRightcon= new ImageIcon(dishItems[7].getImagePath());
         ImageIcon backArrowIcon=new ImageIcon("javaimages/backArrow.jpeg");
         
+        
 
+
+        nav=new JPanel();
+        nav.setBackground(Color.RED);
+        nav.setPreferredSize(new Dimension(100,100));
         
 
         restourantName1=new JLabel(restourantName);
@@ -389,12 +393,26 @@ class Dishes extends Restaurants{
 
 
 
+        AddDishButton= new JButton("Add Dish");
+        AddDishButton.setFocusable(false);
+        AddDishButton.addActionListener(this);
+        AddDishButton.setBackground(new Color(255,0,204));
+        AddDishButton.setBounds(1255,5,100,30);
+
+
+
+
 
         //scrollPane = new JScrollPane(nav, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         //scrollPane.setPreferredSize(new Dimension(300, 200));
 
 
 
+
+
+
+
+        this.add(nav,BorderLayout.NORTH);
         this.add(topLeftPanel);
         this.add(topCenter1Panel);
         this.add(topCenter2Panel);
@@ -404,9 +422,15 @@ class Dishes extends Restaurants{
         this.add(bottomCenter2Panel);
         this.add(bottomRightPanel);
         this.add(back);
+        
         //this.add(scrollPane);
 
-        
+              
+        nav.setLayout(null);
+        nav.add(restourantName1);
+        nav.add(menus);
+        nav.add(backButton);
+        nav.add(AddDishButton);
     
      this.setVisible(true);   
     }
