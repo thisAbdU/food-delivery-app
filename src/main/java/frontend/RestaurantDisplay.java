@@ -3,9 +3,15 @@ package frontend;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
+import database.Restaurant;
+import database.RestaurantDatabase;
+import database.UserDatabase;
 import user.LoginPage;
 
 class restaurantItem{
@@ -24,7 +30,12 @@ class restaurantItem{
 }
 public class RestaurantDisplay{
     public RestaurantDisplay(restaurantItem[] restaurantsList){
-        Restaurants restaurant=new Restaurants(restaurantsList);
+        RestaurantDatabase restaurantDb = new RestaurantDatabase();
+        Connection conn = restaurantDb.connect_to_database("food_delivery_app", "postgres", "1234");
+
+        ArrayList<Restaurant> restaurants = restaurantDb.getAllRestaurants(conn, "restaurant");
+
+        Restaurants restaurant=new Restaurants(restaurants);
 
     }
     
@@ -38,27 +49,14 @@ class Restaurants extends JFrame implements ActionListener{
     JScrollPane scrollPane;
 
 
-    public Restaurants(restaurantItem[]restaurantsList){
+    public Restaurants(ArrayList<Restaurant> restaurants){
         this.setSize(1366,768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        //this.setMinimumSize(new Dimension(1024 , 600));
-
-
+        this.setMinimumSize(new Dimension(1024 , 600));
         
 
-        ImageIcon bossBurIcon=new ImageIcon(getClass().getResource(restaurantsList[0].getImagePath()));
-        ImageIcon mamasIcon= new ImageIcon(getClass().getResource(restaurantsList[1].getImagePath()));
-        ImageIcon mimisIcon= new ImageIcon(getClass().getResource(restaurantsList[2].getImagePath()));
-        ImageIcon parkdaleIcon= new ImageIcon(getClass().getResource(restaurantsList[3].getImagePath()));
-        ImageIcon chinaIcon= new ImageIcon(getClass().getResource(restaurantsList[4].getImagePath()));
-        ImageIcon chanolyIcon= new ImageIcon(getClass().getResource(restaurantsList[5].getImagePath()));
-        ImageIcon bellaciaoIcon= new ImageIcon(getClass().getResource(restaurantsList[6].getImagePath()));
-        ImageIcon amrognIcon= new ImageIcon(getClass().getResource(restaurantsList[7].getImagePath()));
         ImageIcon backArrowIcon=new ImageIcon(getClass().getResource("/images/backArrow.jpeg"));
-        
-        
-
 
         nav=new JPanel();
         nav.setBackground(Color.RED);
@@ -85,8 +83,6 @@ class Restaurants extends JFrame implements ActionListener{
         restuarnts.setForeground(Color.white);
         restuarnts.setFont(new Font("MV Boli",Font.BOLD,25));
         restuarnts.setBounds(550,55,500,45);
-
-
 
 
         bossPanel = new JPanel();
@@ -129,82 +125,86 @@ class Restaurants extends JFrame implements ActionListener{
         amrognPanel.setLayout(null);
         amrognPanel.setBounds(1010,300,300,275);
 
-        
-
-
-        
 
         bossburImage= new JLabel();
+        ImageIcon bossBurIcon=new ImageIcon(getClass().getResource(restaurants.get(0).getRestaurantImage()));
         bossburImage.setIcon(bossBurIcon);
         bossburImage.setBounds(30,0,300,200);
 
         mamasImage=new JLabel();
+        ImageIcon mamasIcon= new ImageIcon(getClass().getResource(restaurants.get(1).getRestaurantImage()));
         mamasImage.setIcon(mamasIcon);
         mamasImage.setBounds(25,0,300,200);
 
         mimisImage= new JLabel();
+        ImageIcon mimisIcon= new ImageIcon(getClass().getResource(restaurants.get(2).getRestaurantImage()));
         mimisImage.setIcon(mimisIcon);
         mimisImage.setBounds(65,0,300,200);
 
         parkdaleImage=new JLabel();
+        ImageIcon parkdaleIcon= new ImageIcon(getClass().getResource(restaurants.get(3).getRestaurantImage()));
         parkdaleImage.setIcon(parkdaleIcon);
         parkdaleImage.setBounds(25,0,300,200);
 
         chinaImage= new JLabel();
+        ImageIcon chinaIcon= new ImageIcon(getClass().getResource(restaurants.get(4).getRestaurantImage()));
         chinaImage.setIcon(chinaIcon);
         chinaImage.setBounds(30,0,300,200);
 
         chanolyImage= new JLabel();
+        ImageIcon chanolyIcon= new ImageIcon(getClass().getResource(restaurants.get(5).getRestaurantImage()));
         chanolyImage.setIcon(chanolyIcon);
         chanolyImage.setBounds(30,0,300,200);
 
         bellaciaoImage= new JLabel();
+        ImageIcon bellaciaoIcon= new ImageIcon(getClass().getResource(restaurants.get(6).getRestaurantImage()));
         bellaciaoImage.setIcon(bellaciaoIcon);
         bellaciaoImage.setBounds(30,0,300,200);
 
         amrognImage= new JLabel();
+        ImageIcon amrognIcon= new ImageIcon(getClass().getResource(restaurants.get(7).getRestaurantImage()));
         amrognImage.setIcon(amrognIcon);
         amrognImage.setBounds(30,0,300,200);
 
 
 
 
-        bosstext=new JLabel(restaurantsList[0].getName());
+        bosstext=new JLabel(restaurants.get(0).getRestaurantName());
         bosstext.setForeground(Color.red);
         bosstext.setBounds(50,180,400,30);
         bosstext.setFont(new Font("sans serif",Font.BOLD,25));
 
-        mamastext= new JLabel(restaurantsList[1].getName());
+        mamastext= new JLabel(restaurants.get(1).getRestaurantName());
         mamastext.setForeground(Color.red);
         mamastext.setBounds(50,180,400,30);
         mamastext.setFont(new Font("sans serif",Font.BOLD,25));
 
-        mimistext= new JLabel(restaurantsList[2].getName());
+        mimistext= new JLabel(restaurants.get(2).getRestaurantName());
         mimistext.setForeground(Color.red);
         mimistext.setBounds(7,180,400,30);
         mimistext.setFont(new Font("sans serif",Font.BOLD,17));
 
-        parkdaletext= new JLabel(restaurantsList[3].getName());
+        parkdaletext= new JLabel(restaurants.get(3).getRestaurantName());
         parkdaletext.setForeground(Color.red);
         parkdaletext.setBounds(20,180,400,30);
         parkdaletext.setFont(new Font("sans serif",Font.BOLD,17));
 
-        chinatext=new JLabel(restaurantsList[4].getName());
+        chinatext=new JLabel(restaurants.get(4).getRestaurantName());
         chinatext.setForeground(Color.red);
         chinatext.setBounds(50,180,400,30);
         chinatext.setFont(new Font("sans serif",Font.BOLD,22));
 
-        chanolytext= new JLabel(restaurantsList[5].getName());
+        chanolytext= new JLabel(restaurants.get(5).getRestaurantName());
         chanolytext.setForeground(Color.red);
         chanolytext.setBounds(50,180,400,30);
         chanolytext.setFont(new Font("sans serif",Font.BOLD,25));
 
-        bellaciaotext=new JLabel(restaurantsList[6].getName());
+        bellaciaotext=new JLabel(restaurants.get(6).getRestaurantName());
         bellaciaotext.setForeground(Color.red);
         bellaciaotext.setBounds(50,180,400,30);
         bellaciaotext.setFont(new Font("sans serif",Font.BOLD,25));
 
-        amrogntext=new JLabel(restaurantsList[7].getName());
+        amrogntext=new JLabel(restaurants.get(7).getRestaurantName());
         amrogntext.setForeground(Color.red);
         amrogntext.setBounds(50,180,400,30);
         amrogntext.setFont(new Font("sans serif",Font.BOLD,25));
