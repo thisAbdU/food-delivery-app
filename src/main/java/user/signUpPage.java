@@ -4,9 +4,6 @@ package user;
 import javax.swing.*;
 
 public class signUpPage extends JFrame {
-    public static void main(String[] args) {
-        new signUpPage();
-    }
     JTabbedPane tab = new JTabbedPane();
     
     signUpPage() {

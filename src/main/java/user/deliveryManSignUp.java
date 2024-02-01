@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Connection;
-import java.util.HashMap;
 import javax.swing.*;
 
 import database.UserDatabase;
@@ -130,8 +129,14 @@ class deliveryManSignUp extends JPanel implements ActionListener, ItemListener{
         // Retrieve the entered values from text fields
         
         
-            // Validate if all fields are filled
-            if ((name.isEmpty() || userName.isEmpty() || email.isEmpty()
+            if (!InputVerifier.isValidEmail(email)){
+                JOptionPane.showMessageDialog(null, "Please enter valid email address.", "Invalid email address", JOptionPane.WARNING_MESSAGE);
+            }else if (!InputVerifier.isValidPhoneNumber(phoneNumber)){
+                JOptionPane.showMessageDialog(null, "Please enter valid phone number.", "Invalid phone number", JOptionPane.WARNING_MESSAGE);
+            }else if (!InputVerifier.isValidPassword(password)){
+                JOptionPane.showMessageDialog(null, "length of password must be greater than 8", "Invalid password", JOptionPane.WARNING_MESSAGE);
+            }
+            else if ((name.isEmpty() || userName.isEmpty() || email.isEmpty()
              || phoneNumber.isEmpty() || deliveryAddress.isEmpty() || 
              password.isEmpty() || confirmPassword.isEmpty())) {
 
