@@ -1,6 +1,7 @@
 package user;
 
 import javax.swing.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 import database.UserDatabase;
 import frontend.SampleReastaurantDashboard;
@@ -96,13 +97,16 @@ public class LoginPage extends JFrame implements ActionListener {
             String userName = userTextField.getText();
             String password = String.valueOf(passwordField.getPassword());
 
+            // Hash the password before comparing or storing
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
             UserDatabase user = new UserDatabase();
             Connection connectToDB = user.connect_to_database("food_delivery_app", "postgres", "1234");
 
             if (user.doesUserExist(connectToDB, "usersData", userName)){
                 // we have found the user
 
-                if (user.doesPasswordMatch(connectToDB, "usersData", userName, password)){
+                if (user.doesPasswordMatch(connectToDB, "usersData", userName, hashedPassword)){
                      //then we will check for password match
 
                     if (user.isDeliveryGuy(connectToDB, "usersData", userName)){
